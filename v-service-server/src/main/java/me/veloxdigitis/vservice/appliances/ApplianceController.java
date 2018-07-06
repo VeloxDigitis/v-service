@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -24,12 +25,16 @@ public class ApplianceController {
 
     @RequestMapping(method = GET)
     public ResponseEntity<?> listAppliances() {
-        return ResponseEntity.ok(applianceService.getAppliances());
+        return ResponseEntity.ok(applianceService.getAppliances().stream().map(ApplianceDTO::new).collect(Collectors.toList()));
     }
 
     @RequestMapping(method = POST)
     public ResponseEntity<?> addAppliance(@Valid @RequestBody ApplianceDTO applianceDTO) {
-        applianceService.addAppliance(new Appliance(applianceDTO.getName()));
+        Appliance appliance = new Appliance();
+        appliance.setName(applianceDTO.getName());
+        appliance.setParameters(applianceDTO.getParameters().stream().map(p -> p.pack(appliance)).collect(Collectors.toSet()));
+
+        applianceService.addAppliance(appliance);
         return listAppliances();
     }
 

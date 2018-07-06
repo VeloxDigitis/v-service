@@ -11,19 +11,13 @@ import java.util.Set;
 public class Appliance {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "appliance", cascade = CascadeType.ALL)
-    private final Set<ApplianceParameter> parameters = new HashSet<>();
-
-    protected Appliance() {}
-
-    public Appliance(String name) {
-        this.name = name;
-    }
+    @OneToMany(mappedBy = "appliance", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<ApplianceParameter> parameters = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -43,6 +37,10 @@ public class Appliance {
 
     public Set<ApplianceParameter> getParameters() {
         return parameters;
+    }
+
+    public void setParameters(Set<ApplianceParameter> parameters) {
+        this.parameters = parameters;
     }
 
     @Override

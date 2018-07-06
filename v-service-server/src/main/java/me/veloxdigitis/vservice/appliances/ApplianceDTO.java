@@ -1,16 +1,23 @@
 package me.veloxdigitis.vservice.appliances;
 
+import me.veloxdigitis.vservice.parameters.ParameterDTO;
+
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ApplianceDTO {
 
     @NotBlank
     private String name;
 
+    private Set<ParameterDTO> parameters;
+
     protected ApplianceDTO() {}
 
     public ApplianceDTO(Appliance appliance) {
         this.name = appliance.getName();
+        this.parameters = appliance.getParameters().stream().map(ParameterDTO::new).collect(Collectors.toSet());
     }
 
     public String getName() {
@@ -21,4 +28,11 @@ public class ApplianceDTO {
         this.name = name;
     }
 
+    public Set<ParameterDTO> getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(Set<ParameterDTO> parameters) {
+        this.parameters = parameters;
+    }
 }

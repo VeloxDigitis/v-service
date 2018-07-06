@@ -1,6 +1,5 @@
 package me.veloxdigitis.vservice.parameters;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.veloxdigitis.vservice.appliances.Appliance;
 
 import javax.persistence.*;
@@ -10,22 +9,22 @@ import javax.persistence.*;
 public class ApplianceParameter {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     private String name;
     private String value;
 
-    @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "appliance_id")
     private Appliance appliance;
 
     protected ApplianceParameter() {}
 
-    public ApplianceParameter(String name, String value) {
+    public ApplianceParameter(String name, String value, Appliance appliance) {
         this.name = name;
         this.value = value;
+        this.appliance = appliance;
     }
 
     public Long getId() {
