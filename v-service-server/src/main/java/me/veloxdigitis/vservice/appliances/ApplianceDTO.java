@@ -11,12 +11,16 @@ public class ApplianceDTO {
     @NotBlank
     private String name;
 
+    @NotBlank
+    private String category;
+
     private Set<ParameterDTO> parameters;
 
     protected ApplianceDTO() {}
 
     public ApplianceDTO(Appliance appliance) {
         this.name = appliance.getName();
+        this.category = appliance.getCategory().getName();
         this.parameters = appliance.getParameters().stream().map(ParameterDTO::new).collect(Collectors.toSet());
     }
 
@@ -34,5 +38,13 @@ public class ApplianceDTO {
 
     public void setParameters(Set<ParameterDTO> parameters) {
         this.parameters = parameters;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

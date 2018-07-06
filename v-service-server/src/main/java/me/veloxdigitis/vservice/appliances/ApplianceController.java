@@ -1,5 +1,6 @@
 package me.veloxdigitis.vservice.appliances;
 
+import me.veloxdigitis.vservice.categories.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,7 @@ public class ApplianceController {
         Appliance appliance = new Appliance();
         appliance.setName(applianceDTO.getName());
         appliance.setParameters(applianceDTO.getParameters().stream().map(p -> p.pack(appliance)).collect(Collectors.toSet()));
+        appliance.setCategory(new Category(applianceDTO.getCategory()));
 
         applianceService.addAppliance(appliance);
         return listAppliances();

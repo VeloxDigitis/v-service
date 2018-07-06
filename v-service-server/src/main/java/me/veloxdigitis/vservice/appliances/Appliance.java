@@ -1,5 +1,6 @@
 package me.veloxdigitis.vservice.appliances;
 
+import me.veloxdigitis.vservice.categories.Category;
 import me.veloxdigitis.vservice.parameters.ApplianceParameter;
 
 import javax.persistence.*;
@@ -18,6 +19,9 @@ public class Appliance {
 
     @OneToMany(mappedBy = "appliance", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<ApplianceParameter> parameters = new HashSet<>();
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Category category;
 
     public Long getId() {
         return id;
@@ -41,6 +45,14 @@ public class Appliance {
 
     public void setParameters(Set<ApplianceParameter> parameters) {
         this.parameters = parameters;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

@@ -4,7 +4,8 @@
     <ngb-panel *ngFor="let appliance of appliances">
         <ng-template ngbPanelTitle>{{appliance.name | uppercase}}</ng-template>
         <ng-template ngbPanelContent>
-            Name: {{appliance.name}}
+            <h4>Name: {{appliance.name}}</h4>
+            <h4>Category: {{appliance.category}}</h4>
             <ul class="list-group">
                 <li class="list-group-item" *ngFor="let parameter of appliance.parameters">
                     {{parameter.name}}: {{parameter.value}}
