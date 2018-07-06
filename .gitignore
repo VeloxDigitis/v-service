@@ -1,3 +1,8 @@
-targer/
-.idea/
 *.iml
+*.log
+
+/v-service-client/.idea/
+/v-service-client/node_modules/
+
+/v-service-server/.idea/
+/v-service-server/target/
