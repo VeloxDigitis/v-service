@@ -13,8 +13,6 @@ export class AppliancesComponent implements OnInit {
 
   constructor(private applianceService: ApplianceService) { }
 
-  constructor() { }
-
   ngOnInit() {
     this.getAppliances();
   }
