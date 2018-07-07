@@ -55,4 +55,36 @@
 
 .title-btn {
     float: right;
+    width: 10em;
+}
+
+.comments {
+    padding: .5em;
+    background-color: #f8f8f8;
+}
+
+.comment-avatar {
+    height: 2em;
+    margin-right: 1em;
+}
+
+.comment-input {
+    margin-top: 1em;
+}
+
+.comment-text {
+    overflow: hidden;
+    padding-right: .5em;
+}
+
+.comment-text-input {
+    width: 100%;
+}
+
+.bottom {
+    margin-top: 1em;
+}
+
+.bottom-btn {
+    width: 100%;
 }
