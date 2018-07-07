@@ -1,16 +1,21 @@
-<h2>Appliances list</h2>
+<div class="title-bar">
+    <h2>Appliances list</h2>
+    <button class="title-btn btn btn-primary">Register</button>
+</div>
 
 <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-0">
     <ngb-panel *ngFor="let appliance of appliances">
         <ng-template ngbPanelTitle>{{appliance.name | uppercase}}</ng-template>
         <ng-template ngbPanelContent>
-            <h4>Name: {{appliance.name}}</h4>
-            <h4>Category: {{appliance.category}}</h4>
+            Name: <h3>{{appliance.name}}</h3>
+            Category: <h3>{{appliance.category}}</h3>
             <ul class="list-group">
                 <li class="list-group-item" *ngFor="let parameter of appliance.parameters">
                     {{parameter.name}}: {{parameter.value}}
                 </li>
             </ul>
+            <hr />
+            <div class="comments"></div>
         </ng-template>
     </ngb-panel>
 </ngb-accordion>

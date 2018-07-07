@@ -1,6 +1,7 @@
 package me.veloxdigitis.vservice.appliances;
 
 import me.veloxdigitis.vservice.categories.Category;
+import me.veloxdigitis.vservice.categories.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,10 +19,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class ApplianceController {
 
     private final IApplianceService applianceService;
+    private final ICategoryService categoryService;
 
     @Autowired
-    public ApplianceController(IApplianceService applianceService) {
+    public ApplianceController(IApplianceService applianceService, ICategoryService categoryService) {
         this.applianceService = applianceService;
+        this.categoryService = categoryService;
     }
 
     @RequestMapping(method = GET)
@@ -34,7 +37,9 @@ public class ApplianceController {
         Appliance appliance = new Appliance();
         appliance.setName(applianceDTO.getName());
         appliance.setParameters(applianceDTO.getParameters().stream().map(p -> p.pack(appliance)).collect(Collectors.toSet()));
-        appliance.setCategory(new Category(applianceDTO.getCategory()));
+
+        String categoryName = applianceDTO.getCategory();
+        appliance.setCategory(categoryService.findByName(categoryName).orElse(new Category(categoryName)));
 
         applianceService.addAppliance(appliance);
         return listAppliances();

@@ -8,9 +8,6 @@ import javax.persistence.Id;
 public class Category {
 
     @Id
-    @GeneratedValue
-    private Long id;
-
     private String name;
 
     protected Category() {}
