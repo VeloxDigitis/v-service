@@ -6,7 +6,7 @@
 <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-0">
     <ngb-panel *ngFor="let appliance of appliances">
         <ng-template ngbPanelTitle>
-            {{appliance.name | uppercase}}
+            <div  (click)="onSelect(appliance)">{{appliance.name | uppercase}}</div>
         </ng-template>
         <ng-template ngbPanelContent>
             <div class="row">
@@ -40,9 +40,9 @@
                     {{comment.text}}
                 </li>
                 <div class="comment-input">
-                    <button class="btn title-btn">Send</button>
+                    <button (click)="comment(commentText)" class="btn title-btn">Send</button>
                     <div class="comment-text">
-                        <input class="form-control comment-text-input" type="text" [(ngModel)]="comment" placeholder="Comment">
+                        <input class="form-control comment-text-input" type="text" [(ngModel)]="commentText" placeholder="Comment">
                     </div>
                 </div>
             </ul>

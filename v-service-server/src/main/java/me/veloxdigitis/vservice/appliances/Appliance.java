@@ -7,6 +7,7 @@ import me.veloxdigitis.vservice.parameters.ApplianceParameter;
 import javax.persistence.*;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,7 +29,7 @@ public class Appliance {
     private Category category;
 
     @OneToMany(mappedBy = "appliance")
-    private Set<Comment> comments = Collections.emptySet();
+    private List<Comment> comments = Collections.emptyList();
 
     public Long getId() {
         return id;
@@ -70,12 +71,8 @@ public class Appliance {
         this.category = category;
     }
 
-    public Set<Comment> getComments() {
+    public List<Comment> getComments() {
         return comments;
-    }
-
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
     }
 
     @Override

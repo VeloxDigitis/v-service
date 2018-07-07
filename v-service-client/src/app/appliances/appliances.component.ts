@@ -10,6 +10,7 @@ import {ApplianceService} from "../appliance.service";
 export class AppliancesComponent implements OnInit {
 
   appliances: Appliance[];
+  selectedAppliance: Appliance;
 
   constructor(private applianceService: ApplianceService) { }
 
@@ -19,7 +20,17 @@ export class AppliancesComponent implements OnInit {
 
   getAppliances(): void {
     this.applianceService.getAppliances()
-        .subscribe(appliances => this.appliances = appliances);
+        .subscribe(appliances => {
+          this.appliances = appliances;
+          this.selectedAppliance = this.appliances[0];
+      });
   }
 
+  comment(commentText): void {
+    this.selectedAppliance.comments.push(this.applianceService.sendComment(commentText, this.selectedAppliance));
+  }
+
+  onSelect(appliance: Appliance) {
+    this.selectedAppliance = appliance;
+  }
 }
