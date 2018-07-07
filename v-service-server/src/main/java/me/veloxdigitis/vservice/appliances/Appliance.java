@@ -1,9 +1,11 @@
 package me.veloxdigitis.vservice.appliances;
 
 import me.veloxdigitis.vservice.categories.Category;
+import me.veloxdigitis.vservice.comments.Comment;
 import me.veloxdigitis.vservice.parameters.ApplianceParameter;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,6 +26,9 @@ public class Appliance {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Category category;
+
+    @OneToMany(mappedBy = "appliance")
+    private Set<Comment> comments = Collections.emptySet();
 
     public Long getId() {
         return id;
@@ -63,6 +68,14 @@ public class Appliance {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 
     @Override

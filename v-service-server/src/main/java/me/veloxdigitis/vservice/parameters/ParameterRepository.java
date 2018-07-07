@@ -6,6 +6,6 @@ import java.util.Set;
 
 public interface ParameterRepository extends CrudRepository<ApplianceParameter, Long> {
 
-    Set<ApplianceParameter> findAllBy();
+    Set<ApplianceParameter> findAll();
 
 }

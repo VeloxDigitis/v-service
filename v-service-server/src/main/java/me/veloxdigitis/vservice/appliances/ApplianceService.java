@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ApplianceService implements IApplianceService {
@@ -23,5 +24,10 @@ public class ApplianceService implements IApplianceService {
     @Override
     public void addAppliance(Appliance appliance) {
         appliancesRepository.save(appliance);
+    }
+
+    @Override
+    public Optional<Appliance> getAppliance(Long id) {
+        return appliancesRepository.findById(id);
     }
 }
