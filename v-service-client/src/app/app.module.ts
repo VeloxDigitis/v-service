@@ -7,11 +7,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { AppliancesComponent } from './appliances/appliances.component';
+import { ApplianceFormComponent } from './appliance-form/appliance-form.component';
+import { ApplianceDetailsComponent } from './appliance-details/appliance-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppliancesComponent
+    AppliancesComponent,
+    ApplianceFormComponent,
+    ApplianceDetailsComponent
   ],
   imports: [
     NgbModule.forRoot(),

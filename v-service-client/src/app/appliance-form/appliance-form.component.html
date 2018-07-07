@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="form-group col-6">
+        <label for="name-i">Name</label>
+        <input [(ngModel)]="name" type="email" class="form-control" id="name-i" placeholder="Aquos">
+      </div>
+      <div class="form-group col-6">
+        <label for="category-i">Category</label>
+        <select [(ngModel)]="category" class="form-control" id="category-i">
+          <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <ul class="list-group comments">
+      <li class="list-group-item" *ngFor="let parameter of parameters">
+        {{parameter.name}}: {{parameter.value}}
+      </li>
+      <div class="comment-input row">
+        <div class="comment-text col-5">
+          <input class="form-control comment-text-input" type="text" [(ngModel)]="paramName" placeholder="Parameter">
+        </div>
+        <div class="comment-text col-5">
+          <input class="form-control comment-text-input" type="text" [(ngModel)]="paramValue" placeholder="Value">
+        </div>
+        <button (click)="addParameter(paramName, paramValue)" class="btn title-btn col-2">Add</button>
+      </div>
+    </ul>
+
+    <button (click)="add(name, category, parameters)" class="btn btn-primary btn-block bottom">Register</button>
+  </div>
+</div>

@@ -28,7 +28,7 @@ public class Appliance {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Category category;
 
-    @OneToMany(mappedBy = "appliance")
+    @OneToMany(mappedBy = "appliance", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> comments = Collections.emptyList();
 
     public Long getId() {

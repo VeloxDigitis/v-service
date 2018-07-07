@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Appliance} from "../appliance";
 import {ApplianceService} from "../appliance.service";
+import {Category} from "../category";
 
 @Component({
   selector: 'app-appliances',
@@ -10,32 +11,24 @@ import {ApplianceService} from "../appliance.service";
 export class AppliancesComponent implements OnInit {
 
   appliances: Appliance[];
-  selectedAppliance: Appliance;
+  categories: Category[];
+  isCollapsed = true;
 
   constructor(private applianceService: ApplianceService) { }
 
   ngOnInit() {
     this.getAppliances();
+    this.applianceService.getCategories()
+        .subscribe(categories => {
+            this.categories = categories;
+        });
   }
 
   getAppliances(): void {
     this.applianceService.getAppliances()
         .subscribe(appliances => {
           this.appliances = appliances;
-          this.selectedAppliance = this.appliances[0];
       });
   }
 
-  delete(): void {
-    this.applianceService.delete(this.selectedAppliance);
-    this.appliances.splice(this.appliances.indexOf(this.selectedAppliance), 1);
-  }
-
-  comment(commentText): void {
-    this.selectedAppliance.comments.push(this.applianceService.sendComment(commentText, this.selectedAppliance));
-  }
-
-  onSelect(appliance: Appliance) {
-    this.selectedAppliance = appliance;
-  }
 }

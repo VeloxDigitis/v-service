@@ -1,51 +1,18 @@
 <div class="title-bar">
     <h2>Appliances list</h2>
-    <button class="title-btn btn btn-primary">Register</button>
+    <button class="title-btn btn btn-primary" (click)="isCollapsed = !isCollapsed">Register</button>
+    <div style="clear: both"></div>
 </div>
 
-<ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-0">
+<div id="form-collapse" [ngbCollapse]="isCollapsed">
+    <app-appliance-form [appliances]="appliances" [categories]="categories"></app-appliance-form>
+</div>
+
+<ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
     <ngb-panel *ngFor="let appliance of appliances">
-        <ng-template ngbPanelTitle>
-            <div  (click)="onSelect(appliance)">{{appliance.name | uppercase}}</div>
-        </ng-template>
+        <ng-template ngbPanelTitle>{{appliance.name | uppercase}}</ng-template>
         <ng-template ngbPanelContent>
-            <div class="row">
-                <div class="col-4">
-                    Name: <h3>{{appliance.name}}</h3>
-                </div>
-                <div class="col-4">
-                    Category: <h3>{{appliance.category}}</h3>
-                </div>
-                <div class="col-4">
-                    State: <h3>{{appliance.state}}</h3>
-                </div>
-            </div>
-            <hr />
-            <h4>Parameters</h4>
-            <ul class="list-group comments">
-                <li class="list-group-item" *ngFor="let parameter of appliance.parameters">
-                    {{parameter.name}}: {{parameter.value}}
-                </li>
-            </ul>
-            <hr />
-            <div class="row bottom">
-                <div class="col-4"> <button (click)="delete()" class="btn btn-danger bottom-btn">Delete</button></div>
-                <div class="col-4"> <!--button class="btn btn-info bottom-btn">Edit</button--></div>
-                <div class="col-4"> <!--button class="btn btn-default bottom-btn">Report</button--></div>
-            </div>
-            <hr />
-            <ul class="list-group comments">
-                <li class="list-group-item" *ngFor="let comment of appliance.comments">
-                    <img class=".img-thumbnail comment-avatar" src="assets/user.png">
-                    {{comment.text}}
-                </li>
-                <div class="comment-input">
-                    <button (click)="comment(commentText)" class="btn title-btn">Send</button>
-                    <div class="comment-text">
-                        <input class="form-control comment-text-input" type="text" [(ngModel)]="commentText" placeholder="Comment">
-                    </div>
-                </div>
-            </ul>
+            <app-appliance-details [appliance]="appliance" [appliances]="appliances"></app-appliance-details>
         </ng-template>
     </ngb-panel>
 </ngb-accordion>
