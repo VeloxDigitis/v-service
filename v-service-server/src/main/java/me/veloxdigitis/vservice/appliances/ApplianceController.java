@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.stream.Collectors;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -55,6 +56,14 @@ public class ApplianceController {
     @RequestMapping(value = "{id}", method = GET)
     public ResponseEntity<?> get(@PathVariable Long id) {
         return applianceService.getAppliance(id).map(ApplianceDTO::new).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @RequestMapping(value = "{id}", method = DELETE)
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        return applianceService.getAppliance(id).map(a -> {
+            applianceService.deleteAppliance(a);
+            return listAppliances();
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @RequestMapping(value = "{id}/comment", method = POST)

@@ -8,5 +8,6 @@ public interface IApplianceService {
     List<Appliance> getAppliances();
     void addAppliance(Appliance appliance);
     Optional<Appliance> getAppliance(Long id);
+    void deleteAppliance(Appliance appliance);
 
 }

@@ -30,4 +30,9 @@ public class ApplianceService implements IApplianceService {
     public Optional<Appliance> getAppliance(Long id) {
         return appliancesRepository.findById(id);
     }
+
+    @Override
+    public void deleteAppliance(Appliance appliance) {
+        appliancesRepository.delete(appliance);
+    }
 }

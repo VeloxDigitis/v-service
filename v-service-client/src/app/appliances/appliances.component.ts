@@ -26,6 +26,11 @@ export class AppliancesComponent implements OnInit {
       });
   }
 
+  delete(): void {
+    this.applianceService.delete(this.selectedAppliance);
+    this.appliances.splice(this.appliances.indexOf(this.selectedAppliance), 1);
+  }
+
   comment(commentText): void {
     this.selectedAppliance.comments.push(this.applianceService.sendComment(commentText, this.selectedAppliance));
   }
