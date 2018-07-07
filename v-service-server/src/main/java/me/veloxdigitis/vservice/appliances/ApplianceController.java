@@ -37,6 +37,7 @@ public class ApplianceController {
         Appliance appliance = new Appliance();
         appliance.setName(applianceDTO.getName());
         appliance.setParameters(applianceDTO.getParameters().stream().map(p -> p.pack(appliance)).collect(Collectors.toSet()));
+        appliance.setState(applianceDTO.getState());
 
         String categoryName = applianceDTO.getCategory();
         appliance.setCategory(categoryService.findByName(categoryName).orElse(new Category(categoryName)));

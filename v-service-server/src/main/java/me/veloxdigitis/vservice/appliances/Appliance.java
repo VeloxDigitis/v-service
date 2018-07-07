@@ -17,6 +17,8 @@ public class Appliance {
 
     private String name;
 
+    private ApplianceState state = ApplianceState.WORKING;
+
     @OneToMany(mappedBy = "appliance", fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<ApplianceParameter> parameters = new HashSet<>();
 
@@ -37,6 +39,14 @@ public class Appliance {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ApplianceState getState() {
+        return state;
+    }
+
+    public void setState(ApplianceState state) {
+        this.state = state;
     }
 
     public Set<ApplianceParameter> getParameters() {

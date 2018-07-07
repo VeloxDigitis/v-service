@@ -14,6 +14,8 @@ public class ApplianceDTO {
     @NotBlank
     private String category;
 
+    private ApplianceState state = ApplianceState.WORKING;
+
     private Set<ParameterDTO> parameters;
 
     protected ApplianceDTO() {}
@@ -21,6 +23,7 @@ public class ApplianceDTO {
     public ApplianceDTO(Appliance appliance) {
         this.name = appliance.getName();
         this.category = appliance.getCategory().getName();
+        this.state = appliance.getState();
         this.parameters = appliance.getParameters().stream().map(ParameterDTO::new).collect(Collectors.toSet());
     }
 
@@ -46,5 +49,13 @@ public class ApplianceDTO {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public ApplianceState getState() {
+        return state;
+    }
+
+    public void setState(ApplianceState state) {
+        this.state = state;
     }
 }
