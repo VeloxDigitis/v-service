@@ -9661,3 +9661,7 @@ legend {
 .card-header .btn {
     width: 100%;
 }
+
+footer {
+    margin-top: 1em;
+}

@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { AppliancesComponent } from './appliances/appliances.component';
 import { ApplianceFormComponent } from './appliance-form/appliance-form.component';
 import { ApplianceDetailsComponent } from './appliance-details/appliance-details.component';
+import { FooterComponent } from "./shared/layout/footer.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     AppliancesComponent,
     ApplianceFormComponent,
-    ApplianceDetailsComponent
+    ApplianceDetailsComponent,
+    FooterComponent
   ],
   imports: [
     NgbModule.forRoot(),
