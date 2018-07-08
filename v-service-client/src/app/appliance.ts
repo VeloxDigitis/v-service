@@ -1,6 +1,7 @@
 import {Parameter} from "./parameter";
 import {Category} from "./category";
 import {State} from "./state";
+import {Comment} from "./comment";
 
 export class Appliance {
 
