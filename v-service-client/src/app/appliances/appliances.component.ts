@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Appliance} from "../appliance";
-import {ApplianceService} from "../appliance.service";
-import {Category} from "../category";
-import {State} from "../state";
+import {Appliance} from "../shared/appliance";
+import {ApplianceService} from "../shared/appliance.service";
+import {Category} from "../shared/category";
+import {State} from "../shared/state";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-appliances',
@@ -17,7 +18,8 @@ export class AppliancesComponent implements OnInit {
 
   public state = State;
 
-  constructor(private applianceService: ApplianceService) { }
+  constructor(private applianceService: ApplianceService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getAppliances();
@@ -25,13 +27,20 @@ export class AppliancesComponent implements OnInit {
         .subscribe(categories => {
             this.categories = categories;
         });
+    this.applianceService.login("admin", "admin");
   }
 
   getAppliances(): void {
     this.applianceService.getAppliances()
-        .subscribe(appliances => {
-          this.appliances = appliances;
-      });
+        .subscribe(
+            (appliances: Appliance[]) => this.appliances = appliances,
+            error => this.router.navigate(['login'])
+      );
+  }
+
+  logout(): void {
+    this.applianceService.logout();
+    this.router.navigate(['login']);
   }
 
 }

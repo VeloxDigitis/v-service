@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Appliance} from "../appliance";
-import {ApplianceService} from "../appliance.service";
-import {Category} from "../category";
-import {Parameter} from "../parameter";
+import {Appliance} from "../shared/appliance";
+import {ApplianceService} from "../shared/appliance.service";
+import {Category} from "../shared/category";
+import {Parameter} from "../shared/parameter";
 
 @Component({
   selector: 'app-appliance-form',

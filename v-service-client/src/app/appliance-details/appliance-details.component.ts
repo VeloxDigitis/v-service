@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Appliance} from '../appliance';
-import {State} from '../state';
-import {ApplianceService} from "../appliance.service";
+import {Appliance} from '../shared/appliance';
+import {State} from '../shared/state';
+import {ApplianceService} from "../shared/appliance.service";
 
 @Component({
   selector: 'app-appliance-details',

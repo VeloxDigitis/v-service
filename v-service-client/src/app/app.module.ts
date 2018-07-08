@@ -10,6 +10,10 @@ import { AppliancesComponent } from './appliances/appliances.component';
 import { ApplianceFormComponent } from './appliance-form/appliance-form.component';
 import { ApplianceDetailsComponent } from './appliance-details/appliance-details.component';
 import { FooterComponent } from "./shared/layout/footer.component";
+import { LoginComponent } from './login/login.component';
+import {routing} from "./app.routing";
+import {AuthGuard} from "./login/auth.guard";
+import {AlertService} from "./alert/alert.service";
 
 @NgModule({
   declarations: [
@@ -17,15 +21,20 @@ import { FooterComponent } from "./shared/layout/footer.component";
     AppliancesComponent,
     ApplianceFormComponent,
     ApplianceDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     NgbModule.forRoot(),
     FormsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    routing
   ],
-  providers: [],
+  providers: [
+      AuthGuard,
+      AlertService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
