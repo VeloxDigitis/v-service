@@ -29,7 +29,7 @@
     {{comment.text}} <span class="time">{{comment.time | date: 'HH:mm dd/MM/yyyy'}}</span>
   </li>
   <div class="comment-input">
-    <button (click)="comment(commentText); commentText=''" class="btn title-btn">Send</button>
+    <button (click)="comment(commentText); commentText=''" class="btn comment-btn">Send</button>
     <div class="comment-text">
       <input class="form-control comment-text-input" type="text" [(ngModel)]="commentText" placeholder="Comment">
     </div>

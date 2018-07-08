@@ -64,7 +64,6 @@ body {
     line-height: 1.5;
     color: #888;
     text-align: left;
-    background-color: #fff;
 }
 
 [tabindex="-1"]:focus {
@@ -9610,15 +9609,15 @@ legend {
 }
 
 .title-bar h2, button {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    display: inline-block;
 }
 
 .title-btn {
+    display: inline-block;
     float: right;
     overflow: hidden;
     width: 10em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .comments {
@@ -9637,13 +9636,12 @@ legend {
 
 .comment-text {
     overflow: hidden;
-    padding-right: .5em;
+    padding-right: .5em
 }
 
 .comment-text-input {
     width: 100%;
 }
-
 
 .bottom {
     margin-top: 1em;
