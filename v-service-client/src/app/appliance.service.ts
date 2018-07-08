@@ -26,13 +26,12 @@ export class ApplianceService {
     }
 
     sendComment(commentText: string, appliance: Appliance) {
-        var comment: Comment = new Comment(commentText);
-        this.http.post(this.applaianceUrl + appliance.id + this.commentsUrl, comment).subscribe();
-        return comment;
+        let comment = new Comment(commentText);
+        return this.http.post(this.applaianceUrl + appliance.id + this.commentsUrl, comment);
     }
 
     delete(appliance: Appliance) {
-        this.http.delete(this.applaianceUrl + appliance.id).subscribe();
+        return this.http.delete(this.applaianceUrl + appliance.id);
     }
 
     register(applianace: Appliance) {

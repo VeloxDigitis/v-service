@@ -64,8 +64,12 @@ public class ApplianceController {
 
     @RequestMapping(value = "{id}/comment", method = POST)
     public ResponseEntity<?> comment(@Valid @RequestBody CommentDTO commentDTO, @PathVariable Long id) {
-        applianceService.getAppliance(id).ifPresent(appliance -> commentService.comment(new Comment(commentDTO.getAuthor(), commentDTO.getText(), appliance)));
-        return get(id);
+        return applianceService.getAppliance(id).
+                map(appliance -> commentService.comment(
+                        new Comment(commentDTO.getAuthor(), commentDTO.getText(), appliance))).
+                map(CommentDTO::new).
+                map(ResponseEntity::ok).
+                orElse(ResponseEntity.notFound().build());
     }
 
     @RequestMapping(value ="{id}", method = PATCH)

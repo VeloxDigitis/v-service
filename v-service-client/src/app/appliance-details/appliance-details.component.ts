@@ -21,12 +21,14 @@ export class ApplianceDetailsComponent implements OnInit {
   }
 
   delete(): void {
-      this.applianceService.delete(this.appliance);
-      this.appliances.splice(this.appliances.indexOf(this.appliance), 1);
+      if(confirm("Are you sure to delete " + this.appliance.name + "?"))
+          this.applianceService.delete(this.appliance).
+            subscribe(() => this.appliances.splice(this.appliances.indexOf(this.appliance), 1));
   }
 
   comment(commentText): void {
-      this.appliance.comments.push(this.applianceService.sendComment(commentText, this.appliance));
+      this.applianceService.sendComment(commentText, this.appliance).
+        subscribe(c => this.appliance.comments.push(c));
   }
 
   report() {

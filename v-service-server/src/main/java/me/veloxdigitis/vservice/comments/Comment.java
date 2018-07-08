@@ -1,8 +1,10 @@
 package me.veloxdigitis.vservice.comments;
 
 import me.veloxdigitis.vservice.appliances.Appliance;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "comment")
@@ -14,6 +16,10 @@ public class Comment {
 
     private String author;
     private String text;
+
+    @Column(nullable = false, updatable = false)
+    @CreationTimestamp
+    private Date time;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "appliance_id")
@@ -49,6 +55,14 @@ public class Comment {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public Appliance getAppliance() {

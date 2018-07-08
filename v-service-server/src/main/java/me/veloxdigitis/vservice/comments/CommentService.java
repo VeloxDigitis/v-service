@@ -3,6 +3,8 @@ package me.veloxdigitis.vservice.comments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class CommentService implements ICommentService {
 
@@ -14,7 +16,8 @@ public class CommentService implements ICommentService {
     }
 
     @Override
-    public void comment(Comment comment) {
+    public Comment comment(Comment comment) {
         commentRepository.save(comment);
+        return comment;
     }
 }

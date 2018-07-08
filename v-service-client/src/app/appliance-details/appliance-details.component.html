@@ -26,7 +26,7 @@
 <ul class="list-group comments">
   <li class="list-group-item" *ngFor="let comment of appliance.comments">
     <img class=".img-thumbnail comment-avatar" src="assets/user.png">
-    {{comment.text}}
+    {{comment.text}} <span class="time">{{comment.time | date: 'HH:mm dd/MM/yyyy'}}</span>
   </li>
   <div class="comment-input">
     <button (click)="comment(commentText); commentText=''" class="btn title-btn">Send</button>
