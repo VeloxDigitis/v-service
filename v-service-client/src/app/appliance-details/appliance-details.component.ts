@@ -13,6 +13,8 @@ export class ApplianceDetailsComponent implements OnInit {
   @Input() appliance: Appliance;
   @Input() appliances: Appliance[];
 
+  public state = State;
+
   constructor(private applianceService: ApplianceService) { }
 
   ngOnInit() {
@@ -33,7 +35,4 @@ export class ApplianceDetailsComponent implements OnInit {
             subscribe(a => this.appliance.state = a.state);
   }
 
-    outOfOrder() {
-        return this.appliance.state == State.OUT_OF_ORDER;
-    }
 }

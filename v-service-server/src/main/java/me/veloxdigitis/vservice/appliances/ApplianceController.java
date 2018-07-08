@@ -70,7 +70,6 @@ public class ApplianceController {
 
     @RequestMapping(value ="{id}", method = PATCH)
     public ResponseEntity<?> setState(@RequestBody String state, @PathVariable Long id) {
-        System.out.println(state);
         applianceService.getAppliance(id).ifPresent(a -> applianceService.setState(a, ApplianceState.valueOf(state)));
         return get(id);
     }
