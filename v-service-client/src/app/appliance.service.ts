@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { Appliance } from './appliance';
 import { Comment } from './comment';
 import { Category } from './category';
+import { State } from './state';
 
 @Injectable({ providedIn: 'root' })
 export class ApplianceService {
@@ -36,5 +37,9 @@ export class ApplianceService {
 
     register(applianace: Appliance) {
         return this.http.post(this.applaianceUrl, applianace);
+    }
+
+    updateState(appliance: Appliance, state: State) {
+        return this.http.patch(this.applaianceUrl + appliance.id, state);
     }
 }

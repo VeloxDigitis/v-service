@@ -9,5 +9,6 @@ public interface IApplianceService {
     void addAppliance(Appliance appliance);
     Optional<Appliance> getAppliance(Long id);
     void deleteAppliance(Appliance appliance);
+    Appliance setState(Appliance a, ApplianceState state);
 
 }

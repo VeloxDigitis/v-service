@@ -3,6 +3,8 @@ package me.veloxdigitis.vservice.appliances;
 import me.veloxdigitis.vservice.categories.Category;
 import me.veloxdigitis.vservice.comments.Comment;
 import me.veloxdigitis.vservice.parameters.ApplianceParameter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.Collections;
@@ -12,6 +14,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "appliance")
+@DynamicUpdate
 public class Appliance {
 
     @Id

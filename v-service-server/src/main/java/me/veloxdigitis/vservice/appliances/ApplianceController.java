@@ -50,7 +50,8 @@ public class ApplianceController {
 
     @RequestMapping(value = "{id}", method = GET)
     public ResponseEntity<?> get(@PathVariable Long id) {
-        return applianceService.getAppliance(id).map(ApplianceDTO::new).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        return applianceService.getAppliance(id).
+                map(ApplianceDTO::new).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @RequestMapping(value = "{id}", method = DELETE)
@@ -64,6 +65,13 @@ public class ApplianceController {
     @RequestMapping(value = "{id}/comment", method = POST)
     public ResponseEntity<?> comment(@Valid @RequestBody CommentDTO commentDTO, @PathVariable Long id) {
         applianceService.getAppliance(id).ifPresent(appliance -> commentService.comment(new Comment(commentDTO.getAuthor(), commentDTO.getText(), appliance)));
+        return get(id);
+    }
+
+    @RequestMapping(value ="{id}", method = PATCH)
+    public ResponseEntity<?> setState(@RequestBody String state, @PathVariable Long id) {
+        System.out.println(state);
+        applianceService.getAppliance(id).ifPresent(a -> applianceService.setState(a, ApplianceState.valueOf(state)));
         return get(id);
     }
 
