@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Appliance} from "../appliance";
 import {ApplianceService} from "../appliance.service";
 import {Category} from "../category";
+import {State} from "../state";
 
 @Component({
   selector: 'app-appliances',
@@ -13,6 +14,8 @@ export class AppliancesComponent implements OnInit {
   appliances: Appliance[];
   categories: Category[];
   isCollapsed = true;
+
+  public state = State;
 
   constructor(private applianceService: ApplianceService) { }
 

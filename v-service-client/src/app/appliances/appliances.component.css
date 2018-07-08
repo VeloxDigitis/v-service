@@ -2,3 +2,12 @@
     margin-bottom: 2em;
     margin-top: 2em;
 }
+
+.cicon {
+    float: right;
+}
+
+.title {
+    float: left;
+    font-size: 120%;
+}

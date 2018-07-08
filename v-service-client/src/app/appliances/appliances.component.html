@@ -10,7 +10,12 @@
 
 <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
     <ngb-panel *ngFor="let appliance of appliances">
-        <ng-template ngbPanelTitle>{{appliance.name | uppercase}}</ng-template>
+        <ng-template ngbPanelTitle>
+            <span class="title"><b >{{appliance.name | uppercase}}</b> [{{appliance.id}}]</span>
+            <i [class.fa-check-circle] = "appliance.state == state.WORKING"
+               [class.fa-exclamation-triangle] = "appliance.state != state.WORKING"
+               class="fas fa-2x cicon"></i>
+        </ng-template>
         <ng-template ngbPanelContent>
             <app-appliance-details [appliance]="appliance" [appliances]="appliances"></app-appliance-details>
         </ng-template>

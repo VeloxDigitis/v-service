@@ -26,19 +26,19 @@ export class ApplianceService {
     }
 
     sendComment(commentText: string, appliance: Appliance) {
-        let comment = new Comment(commentText);
-        return this.http.post(this.applaianceUrl + appliance.id + this.commentsUrl, comment);
+        let comment: Comment = new Comment(commentText);
+        return this.http.post<Comment>(this.applaianceUrl + appliance.id + this.commentsUrl, comment);
     }
 
     delete(appliance: Appliance) {
         return this.http.delete(this.applaianceUrl + appliance.id);
     }
 
-    register(applianace: Appliance) {
-        return this.http.post(this.applaianceUrl, applianace);
+    register(appliance: Appliance) {
+        return this.http.post<Appliance>(this.applaianceUrl, appliance);
     }
 
     updateState(appliance: Appliance, state: State) {
-        return this.http.patch(this.applaianceUrl + appliance.id, state);
+        return this.http.patch<Appliance>(this.applaianceUrl + appliance.id, state);
     }
 }
