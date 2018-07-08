@@ -1,0 +1,27 @@
+<div class="counter">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="all">
+          <p class="counter-count">{{appliances.length}}</p>
+          <p class="counter-p">All</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="working">
+          <p class="counter-count">{{count(state.WORKING)}}</p>
+          <p class="counter-p">Working</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="ooo">
+          <p class="counter-count">{{count(state.OUT_OF_ORDER)}}</p>
+          <p class="counter-p">Out of order</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

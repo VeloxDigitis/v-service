@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import {routing} from "./app.routing";
 import {AuthGuard} from "./login/auth.guard";
 import {AlertService} from "./alert/alert.service";
+import { ApplianceStatsComponent } from './appliance-stats/appliance-stats.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {AlertService} from "./alert/alert.service";
     ApplianceFormComponent,
     ApplianceDetailsComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ApplianceStatsComponent
   ],
   imports: [
     NgbModule.forRoot(),

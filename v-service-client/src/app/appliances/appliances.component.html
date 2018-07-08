@@ -8,6 +8,8 @@
     <app-appliance-form [appliances]="appliances" [categories]="categories"></app-appliance-form>
 </div>
 
+<app-appliance-stats [appliances]="appliances"></app-appliance-stats>
+
 <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
     <ngb-panel *ngFor="let appliance of appliances">
         <ng-template ngbPanelTitle>

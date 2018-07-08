@@ -12,8 +12,8 @@ import {Router} from "@angular/router";
 })
 export class AppliancesComponent implements OnInit {
 
-  appliances: Appliance[];
-  categories: Category[];
+  appliances: Appliance[] = [];
+  categories: Category[] = [];
   isCollapsed = true;
 
   public state = State;
@@ -34,7 +34,7 @@ export class AppliancesComponent implements OnInit {
     this.applianceService.getAppliances()
         .subscribe(
             (appliances: Appliance[]) => this.appliances = appliances,
-            error => this.router.navigate(['login'])
+            () => this.router.navigate(['login'])
       );
   }
 
