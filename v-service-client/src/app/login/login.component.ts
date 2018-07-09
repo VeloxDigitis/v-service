@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(username, password) {
-    this.applianceService.login(username, password);
-    this.router.navigate(['/'])
+    this.applianceService.login(username, password).subscribe(
+        () => this.router.navigate(['/']));
   }
 
 }
