@@ -7,5 +7,6 @@ public interface ICategoryService {
 
     Set<Category> getCategories();
     Optional<Category> findByName(String name);
+    Category add(String name);
 
 }

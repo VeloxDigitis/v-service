@@ -22,4 +22,11 @@ public class CategoryService implements ICategoryService {
         return categoryRepository.findByName(name);
     }
 
+    @Override
+    public Category add(String name) {
+        Category category = new Category(name);
+        categoryRepository.save(category);
+        return category;
+    }
+
 }

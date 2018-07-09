@@ -25,11 +25,11 @@
           <input class="form-control " type="text" [(ngModel)]="paramValue" placeholder="Value">
         </div>
         <div class="col-md-2">
-          <button (click)="addParameter(paramName, paramValue)" class="btn btn-block">Add</button>
+          <button (click)="addParameter(paramName, paramValue); paramName=''; paramValue='';" class="btn btn-block">Add</button>
         </div>
       </div>
     </ul>
 
-    <button (click)="add(name, category, parameters)" class="btn btn-primary btn-block bottom">Register</button>
+    <button (click)="add(name, category, parameters); name=''; category=''" class="btn btn-primary btn-block bottom">Register</button>
   </div>
 </div>
