@@ -8,6 +8,10 @@
 * Bootstrap
 * Font Awesome
 
+## Demo
+
+[159.89.99.191](http://159.89.99.191)
+
 ## Running
 
 Run backend using Maven Plugin:  
@@ -16,4 +20,6 @@ Run backend using Maven Plugin:
 Run frontend using npm script:  
 `npm run start`
 
-And open `localhost:4200` in browser. Credentials are `admin/admin`.
+Application requires PostgreSQL database named `vservice` with credentials `postgres/admin`.
+
+Open `localhost:4200` in browser. Credentials are `admin/admin`.
