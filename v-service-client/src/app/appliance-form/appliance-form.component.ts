@@ -29,7 +29,10 @@ export class ApplianceFormComponent implements OnInit {
 
   add(name: string, category: Category, parameters: Parameter[]): void {
     this.applianceService.register(new Appliance(name, category, parameters)).
-      subscribe(appliance => this.appliances.unshift(appliance));
+      subscribe(appliance => {
+        this.appliances.unshift(appliance);
+        this.parameters = [];
+    });
   }
 
 }
